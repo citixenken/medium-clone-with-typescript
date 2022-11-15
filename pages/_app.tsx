@@ -9,7 +9,7 @@ import { Box } from "../components/Box";
 import NavbarComponent from "../components/NavbarComponent";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [supabaseClient] = useState(() => createBrowserSupabaseClient);
+  const [supabaseClient] = useState(() => createBrowserSupabaseClient());
   // TODO: create a supabase account
   // TODO: make Navbar
   // TODO: make Box component for body content
