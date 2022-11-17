@@ -11,7 +11,6 @@ const Login: NextPage = () => {
   if (user) {
     router.push("/mainFeed");
   }
-
   return (
     <Auth appearance={{ theme: ThemeSupa }} supabaseClient={supabaseClient} />
   );
