@@ -5,6 +5,7 @@ import { Text } from "@nextui-org/react";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { GetServerSidePropsContext } from "next";
 import { useState, useEffect } from "react";
+import ArticleCard from "../../components/ArticleCard";
 
 const MainFeed: NextPage = () => {
   const supabaseClient = useSupabaseClient();
@@ -39,6 +40,9 @@ const MainFeed: NextPage = () => {
         Check out articles from users here
       </Text>
       {/* Article Card */}
+      {articles.map((article) => (
+        <ArticleCard article={article} />
+      ))}
     </>
   );
 };
