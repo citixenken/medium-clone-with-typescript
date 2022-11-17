@@ -28,6 +28,7 @@ const MainFeed: NextPage = () => {
       if (data != null) {
         setArticles(data);
       }
+      if (error) throw error;
     } catch (err: any) {
       alert(err.message);
     }

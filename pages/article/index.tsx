@@ -36,13 +36,38 @@ const Article: NextPage = () => {
     }
   };
 
+  const deleteArticle = async () => {
+    try {
+      const { data, error } = await supabaseClient
+        .from("articles")
+        .delete()
+        .eq("id", id);
+      if (error) throw error;
+      router.push("/mainFeed");
+    } catch (error: any) {
+      alert(error.message);
+    }
+  };
+
   return (
     <>
       <Text h2>{article.title}</Text>
       <Spacer y={0.5} />
-      <User name={article.user_email.toLowerCase()} size="xl" />
+      <User name={article.user_email} size="xl" />
       <Spacer y={1} />
       <Text size="$xl">{article.content}</Text>
+      {user && article.user_id === user.id ? ( //current owner of the article
+        <>
+          <Spacer y={0.5} />
+          <Button size="md" color="warning">
+            Edit Article
+          </Button>
+          <Spacer y={0.5} />
+          <Button size="md" color="error" onPress={() => deleteArticle()}>
+            Delete Article
+          </Button>
+        </>
+      ) : null}
     </>
   );
 };
