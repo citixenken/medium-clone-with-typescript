@@ -2,15 +2,15 @@ import type { NextPage } from "next";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";
 import { Text } from "@nextui-org/react";
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { GetServerSidePropsContext } from "next";
+// import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+// import { GetServerSidePropsContext } from "next";
 import { useState, useEffect } from "react";
 import ArticleCard from "../../components/ArticleCard";
 
 const MainFeed: NextPage = () => {
   const supabaseClient = useSupabaseClient();
-  const user = useUser();
-  const router = useRouter();
+  //   const user = useUser();
+  //   const router = useRouter();
 
   const [articles, setArticles] = useState<string[]>([]);
 
@@ -54,26 +54,26 @@ export default MainFeed;
 // ==========================
 
 // export const getServerSideProps = withPageAuth({ redirectTo: "/login" }); //deprecated
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  // Create authenticated Supabase Client
-  const supabase = createServerSupabaseClient(ctx);
-  // Check if we have a session
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+//   // Create authenticated Supabase Client
+//   const supabase = createServerSupabaseClient(ctx);
+//   // Check if we have a session
+//   const {
+//     data: { session },
+//   } = await supabase.auth.getSession();
 
-  if (!session)
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
+//   if (!session)
+//     return {
+//       redirect: {
+//         destination: "/mainFeed",
+//         permanent: false,
+//       },
+//     };
 
-  return {
-    props: {
-      initialSession: session,
-      user: session.user,
-    },
-  };
-};
+//   return {
+//     props: {
+//       initialSession: session,
+//       user: session.user,
+//     },
+//   };
+// };
