@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+// import "../styles/globals.css";
 import type { AppProps } from "next/app";
 // add Supabase and nextui providers
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
@@ -17,7 +17,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <SessionContextProvider supabaseClient={supabaseClient}>
       <NextUIProvider>
-        {/* insert navbar here */}
         <NavbarComponent />
         <Box
           css={{
