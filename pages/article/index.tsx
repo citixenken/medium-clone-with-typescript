@@ -59,7 +59,11 @@ const Article: NextPage = () => {
       {user && article.user_id === user.id ? ( //current owner of the article
         <>
           <Spacer y={0.5} />
-          <Button size="md" color="warning">
+          <Button
+            size="md"
+            color="warning"
+            onPress={() => router.push("/editArticle?id=" + id)}
+          >
             Edit Article
           </Button>
           <Spacer y={0.5} />
